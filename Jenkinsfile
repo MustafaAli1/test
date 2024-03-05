@@ -33,7 +33,9 @@ pipeline {
                      sshagent(credentials: ['iwish-Id']) {
                
                
-                           sh 'ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"
+                            sh '''
+                            ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"
+                        '''
                         
                           
                        }
