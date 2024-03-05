@@ -27,14 +27,13 @@ pipeline {
             steps{
                 script{
                     echo scm.branches[0].name
-                    if (scm.branches[0].name == "develop") {
+                    if (scm.branches[0].name == "main") {
                     
                    
                      sshagent(credentials: ['iwish-Id']) {
                
-               
-                          sh 'ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"'
-                                    
+                         ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"
+                                   
                           
                        }
 
