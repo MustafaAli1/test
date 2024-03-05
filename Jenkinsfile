@@ -3,7 +3,7 @@ pipeline {
     environment {
         MSG = ''
         AUTHOR=''
-        MSTEAMS_HOOK='https://andpercentcom.webhook.office.com/webhookb2/c7db730d-9e39-4bfd-832a-1aacb2d5f9ec@a8d4876b-beb2-4dd3-82ef-64221ad445ed/JenkinsCI/8cd9efbc90ca4501bade846a343af335/580739c1-d533-498f-9496-e333536ae5e'
+        MSTEAMS_HOOK='https://andpercentcom.webhook.office.com/webhookb2/c7db730d-9e39-4bfd-832a-1aacb2d5f9ec@a8d4876b-beb2-4dd3-82ef-64221ad445ed/JenkinsCI/8cd9efbc90ca4501bade846a343af335/580739c1-d533-498f-9496-e333536ae5e9'
     }
     stages {
         stage('Clone repository') {
@@ -32,8 +32,9 @@ pipeline {
                    
                      sshagent(credentials: ['iwish-Id']) {
                
-                         ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"
-                                   
+               
+                           sh 'ssh -o StrictHostKeyChecking=no ubuntu@157.241.45.181 "cd /var/www/html/test && git pull && bash -ic '/home/ubuntu/.nvm/versions/node/v20.11.0/bin/pm2 restart all'"
+                        
                           
                        }
 
